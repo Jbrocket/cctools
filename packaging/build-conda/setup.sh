@@ -1,5 +1,9 @@
 #! /bin/bash
+conda --version
+conda update -n base conda
+conda --version
 
-curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+conda install -n base conda-libmamba-solver
+conda config --set solver libmamba
 
-echo y | conda install -y  -c conda-forge --strict-channel-priority python=3 gcc_linux-64 gxx_linux-64 gdb m4 perl swig make zlib libopenssl-static openssl conda-pack cloudpickle packaging --experimental-solver=libmamba
+conda install -y  -c conda-forge --strict-channel-priority python=3 gcc_linux-64 gxx_linux-64 gdb m4 perl swig make zlib libopenssl-static openssl conda-pack cloudpickle packaging
