@@ -49,8 +49,10 @@ install: $(INSTALL_PACKAGES)
 test: $(CCTOOLS_PACKAGES)
 	./run_all_tests.sh
 
-lint: config.mk
-	@$(MAKE) -C taskvine lint
+LINT_PACKAGES = taskvine dttools
+$(LINT_PACKAGES):
+	@$(MAKE) -C $@ lint
+lint: config.mk $(LINT_PACKAGES)
 
 format: config.mk
 	@$(MAKE) -C taskvine format
