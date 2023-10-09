@@ -46,7 +46,7 @@ def library_network_code():
                 result = func(*args, **kwargs)
                 success = True
                 reason = None
-            except Exception as e:
+            except Exception as e:  # noqa: F841
                 result = None
                 success = False
                 reason = traceback.format_exc()
@@ -74,7 +74,7 @@ def library_network_code():
         out_pipe = os.fdopen(args.output_fd, 'wb')
 
         config = {
-            "name": name(),
+                "name": name(),  # noqa: F821
         }
         send_configuration(config, out_pipe)
         
